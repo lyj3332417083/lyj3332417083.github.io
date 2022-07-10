@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../mycss/CommodityManage.css">
+    <title>商品管理</title>
+</head>
+<body>
+<div>
+    <button id="add" onclick="showaddbox()">添加商品</button>
+</div>
+<h3 id="empty">暂无数据！</h3>
+<section style="position: absolute">
+    <div id="addbox">
+        <h3>新商品添加</h3>
+        <form id="commodity-add-form">
+            <label>
+                新商品编号:<input type="text" name="commodityno">
+            </label>
+            <label>
+                新商品名字:<input type="text" name="commodityname">
+            </label>
+            <label>
+                新商品品牌编号:<input type="text" name="brandno">
+            </label>
+            <label>
+                新商品供应商编号:<input type="text" name="supplyno">
+            </label>
+            <label>
+                新商品分类:<input type="number" name="levels">
+            </label>
+            <label>
+                新商品版本:<input type="text" name="version">
+            </label>
+            <label>
+                新商品成本:<input type="number" name="cost">
+            </label>
+            <label>
+                新商品售价:<input type="number" name="price">
+            </label>
+            <label>
+                新商品库存:<input type="number" name="num">
+            </label>
+            <label>
+                新商品简介:<input type="text" name="detail">
+            </label>
+            <label>
+                新商品市场价:<input type="number" name="marketprice">
+            </label>
+            <input id="addqr" type="button" value="添加">
+            <input id="addqx" type="button" value="取消" onclick="hideaddbox()">
+        </form>
+    </div>
+    <div id="xgbox">
+        <form id="xgform">
+            <h3>修改商品信息</h3>
+            <label>
+                新商品名字:<input type="text" name="commodityname">
+            </label>
+            <label>
+                新商品品牌编号:<input type="text" name="brandno">
+            </label>
+            <label>
+                新商品供应商编号:<input type="text" name="supplyno">
+            </label>
+            <label>
+                新商品分类:<input type="number" name="levels">
+            </label>
+            <label>
+                新商品版本:<input type="text" name="version">
+            </label>
+            <label>
+                新商品成本:<input type="number" name="cost">
+            </label>
+            <label>
+                新商品售价:<input type="number" name="price">
+            </label>
+            <label>
+                新商品库存:<input type="number" name="num">
+            </label>
+            <label>
+                新商品简介:<input type="text" name="detail">
+            </label>
+            <label>
+                新商品市场价:<input type="number" name="marketprice">
+            </label>
+            <input id="xgqr" type="button" value="修改">
+            <input id="xgqx" type="button" value="取消" onclick="hidexgbox()">
+        </form>
+    </div>
+    <table id="commoditytable" class="commoditytable">
+        <tr>
+            <th>商品编号</th>
+            <th>商品名称</th>
+            <th>品牌编号</th>
+            <th>供应商编号</th>
+            <th>商品分类</th>
+            <th>商品版本</th>
+            <th>商品成本</th>
+            <th>商品售价</th>
+            <th>商品库存</th>
+            <th>商品简介</th>
+            <th>商品市场价</th>
+        </tr>
+    </table>
+</section>
+<script src="../libs/jQuery-2.1.4.min.js"></script>
+<script>
+    function jslong(a){
+        var i=0;
+        for(var o in a){
+            i++;
+        }
+        return i;
+    }
+    function bgtchange(obj){
+        obj.onmouseover=function (){
+            obj.style.backgroundColor="aqua";
+        }
+        obj.onmouseout=function (){
+            obj.style.backgroundColor="antiquewhite";
+        }
+    }
+    function formToJson (data) {
+        data=data.replace(/&/g,"\",\"");
+        data=data.replace(/=/g,"\":\"");
+        data="{\""+data+"\"}";
+        return data;
+    }
+    function  showxgbox(){
+        var box=document.getElementById("xgbox");
+        $('#xgform').find("input").eq(0).val("");
+        $('#xgform').find("input").eq(1).val("");
+        $('#xgform').find("input").eq(2).val("");
+        $('#xgform').find("input").eq(3).val("");
+        box.style.zIndex=3;
+        box.style.display="block";
+    }
+    function hidexgbox(){
+        var box=document.getElementById("xgbox");
+        box.style.zIndex=0;
+        box.style.display="none";
+    }
+    function showaddbox(){
+        var box=document.getElementById("addbox");
+        box.style.zIndex=3;
+        box.style.display="block";
+    }
+    function hideaddbox(){
+        var box=document.getElementById("addbox");
+        $('#commodity-add-form').find("input").eq(0).val("");
+        $('#commodity-add-form').find("input").eq(1).val("");
+        $('#commodity-add-form').find("input").eq(2).val("");
+        $('#commodity-add-form').find("input").eq(3).val("");
+        $('#commodity-add-form').find("input").eq(4).val("");
+        $('#commodity-add-form').find("input").eq(5).val("");
+        $('#commodity-add-form').find("input").eq(6).val("");
+        $('#commodity-add-form').find("input").eq(7).val("");
+        $('#commodity-add-form').find("input").eq(8).val("");
+        $('#commodity-add-form').find("input").eq(9).val("");
+        $('#commodity-add-form').find("input").eq(10).val("");
+        box.style.zIndex=0;
+        box.style.display="none";
+    }
+    $('#addqr').click(function (){
+        var d=$('#commodity-add-form').serialize();
+        d=decodeURIComponent(d,true);
+        var data=formToJson(d);
+        data=JSON.parse(data);
+        alert(data.commodityno);
+        var length=jslong(data);
+                        var t=data["levels"];
+                        var b1 = "<button onclick='xg(this)'>修改</button>";
+                        var b2 = "<button onclick='deletetr(this)'>删除</button>";
+                        var tb = document.getElementById("commoditytable");
+                        var tr = document.createElement("tr");
+                        var td1 = document.createElement("td");
+                        var td2 = document.createElement("td");
+                        var td3 = document.createElement("td");
+                        var td4 = document.createElement("td");
+                        var td5 = document.createElement("td");
+                        var td6 = document.createElement("td");
+                        var td7 = document.createElement("td");
+                        var td8 = document.createElement("td");
+                        var td9 = document.createElement("td");
+                        var td10 = document.createElement("td");
+                        var td11= document.createElement("td");
+                        var td12 = document.createElement("td");
+                        td1.innerHTML = data.commodityno;
+                        td2.innerHTML = data.commodityname;
+                        td3.innerHTML = data.brandno;
+                        td4.innerHTML = data.supplyno;
+                        td5.innerHTML = t;
+                        td6.innerHTML = data.version;
+                        td7.innerHTML = data.cost;
+                        td8.innerHTML = data.price;
+                        td9.innerHTML = data.num;
+                        td10.innerHTML = data.detail;
+                        td11.innerHTML = data.marketprice;
+                        td12.innerHTML = b1 + b2;
+                        tb.appendChild(tr);
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tr.appendChild(td3);
+                        tr.appendChild(td4);
+                        tr.appendChild(td5);
+                        tr.appendChild(td6);
+                        tr.appendChild(td7);
+                        tr.appendChild(td8);
+                        tr.appendChild(td9);
+                        tr.appendChild(td10);
+                        tr.appendChild(td11);
+                        tr.appendChild(td12);
+                        bgtchange(tr);
+    });
+    function deletetr(obj){
+        var tr=$(obj).parent().parent();
+        tr.remove();
+    }
+    function xg(obj){
+        var tr=$(obj).parent().parent();
+        var id=tr.find("td").eq(0).text();
+        var name1=tr.find("td").eq(1).text();
+        var brandno1=tr.find("td").eq(2).text();
+        var supplyno1=tr.find("td").eq(3).text();
+        var levels1=tr.find("td").eq(4).text();
+        var version1=tr.find("td").eq(5).text();
+        var cost1=tr.find("td").eq(6).text();
+        var price1=tr.find("td").eq(7).text();
+        var num1=tr.find("td").eq(8).text();
+        var detail1=tr.find("td").eq(9).text();
+        var marketprice1=tr.find("td").eq(10).text();
+        showxgbox();
+        $('#xgqr').click(function (){
+            async :false;
+            var name0=$('#xgform').find("input").eq(0).val();
+            var brandno0=$('#xgform').find("input").eq(1).val();
+            var supplyno0=$('#xgform').find("input").eq(2).val();
+            var levels0=$('#xgform').find("input").eq(3).val();
+            var version0=$('#xgform').find("input").eq(4).val();
+            var cost0=$('#xgform').find("input").eq(5).val();
+            var price0=$('#xgform').find("input").eq(6).val();
+            var num0=$('#xgform').find("input").eq(7).val();
+            var detail0=$('#xgform').find("input").eq(8).val();
+            var marketprice0=$('#xgform').find("input").eq(9).val();
+            if(name0==""&&brandno0==""&&supplyno0==""&&levels0==""&&version0==""&&cost0==""&&price0==""&&num0==""&&detail0==""&&marketprice0==""){
+                alert("未输入！");
+            }else{
+                if(name0==""){
+                    name0=name1;
+                }
+                if(brandno0==""){
+                    brandno0=brandno1;
+                }
+                if(supplyno0==""){
+                    supplyno0=supplyno1;
+                }
+                if(levels0==""){
+                    levels0=levels1;
+                }
+                if(version0==""){
+                    version0=version1;
+                }
+                if(cost0==""){
+                    cost0=cost1;
+                }
+                if(price0==""){
+                    price0=price1;
+                }
+                if(num0==""){
+                    num0=num1;
+                }
+                if(detail0==""){
+                    detail0=detail1;
+                }
+                if(marketprice0==""){
+                    marketprice0=marketprice1;
+                }
+                var data={"commodityno":id,"commodityname":name0,"brandno":brandno0,"supplyno":supplyno0,
+                "levels":levels0,"version":version0,"cost":cost0,"price":price0,"num":num0,"detail":detail0,"marketprice":marketprice0};
+                alert("修改失败！")
+            }
+        });
+    }
+</script>
+</body>
+</html>
