@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../mycss/BrandManager.css">
+    <title>商品品牌管理</title>
+</head>
+<body>
+     <div>
+         <button id="add" onclick="showaddbox()">添加商品品牌</button>
+     </div>
+     <h3 id="empty">暂无数据！</h3>
+     <section style="position: absolute">
+         <div id="addbox">
+             <h3>新品牌添加</h3><br>
+             <form id="brand-add-form">
+                 <label>
+                     新品牌编号:<input type="text" name="brandno">
+                 </label>
+                 <label>
+                     新品牌名字:<input type="text" name="brandname">
+                 </label>
+                 <label>
+                     新品牌网址:<input type="text" name="url">
+                 </label>
+                 <input id="addqr" type="button" value="添加">
+                 <input id="addqx" type="button" value="取消" onclick="hideaddbox()">
+             </form>
+         </div>
+         <div id="xgbox">
+             <form id="xgform">
+                 <h3>修改品牌信息</h3>
+                 <label>
+                     新品牌名字:<input type="text" name="brandname">
+                 </label>
+                 <label>
+                     新品牌网址:<input type="text" name="url">
+                 </label>
+                 <input id="xgqr" type="button" value="修改">
+                 <input id="xgqx" type="button" value="取消" onclick="hidexgbox()">
+             </form>
+         </div>
+         <table id="brandtable" class="brandtable">
+             <tr>
+                 <th>商品品牌编号</th><th>商品名称</th><th>商品官网</th>
+             </tr>
+         </table>
+     </section>
+     <script src="../libs/jQuery-2.1.4.min.js"></script>
+     <script>
+         function jslong(a){
+             var i=0;
+             for(var o in a){
+                 i++;
+             }
+             return i;
+         }
+         function bgtchange(obj){
+             obj.onmouseover=function (){
+                 obj.style.backgroundColor="aqua";
+             }
+             obj.onmouseout=function (){
+                 obj.style.backgroundColor="antiquewhite";
+             }
+         }
+         function formToJson (data) {
+             data=data.replace(/&/g,"\",\"");
+             data=data.replace(/=/g,"\":\"");
+             data="{\""+data+"\"}";
+             return data;
+         }
+         function deletetr(obj){
+             var tr=$(obj).parent().parent();
+             tr.remove();
+         }
+         function xg(val){
+             var tr=$(val).parent().parent();
+             var id=tr.find("td").eq(0).text();
+             var name1=$(val).parent().parent().find("td").eq(1).text();
+             var url1=$(val).parent().parent().find("td").eq(2).text();
+             showxgbox();
+             $('#xgqr').click(function (){
+                 async :false;
+                 var name0=$('#xgform').find("input").eq(0).val();
+                 var url0=$('#xgform').find("input").eq(1).val();
+                 if(name0==""&&url0==""){
+                     alert("未输入！");
+                 }else{
+                     if(name0 !=""){
+                         $(val).parent().parent().find("td").eq(1).text(name0);
+                     }else{
+                         name0=name1;
+                     }
+                     if(url0 !=""){
+                         $(val).parent().parent().find("td").eq(2).text(url0);
+                     }else{
+                         url0=url1;
+                     }
+                    alert("修改失败！");
+                 }
+             });
+         }
+         function  showxgbox(){
+             var box=document.getElementById("xgbox");
+             var e0=$('#xgform').find("input").eq(0).val("");
+             var e1=$('#xgform').find("input").eq(1).val("");
+             box.style.zIndex=4;
+             box.style.display="block";
+         }
+         function hidexgbox(){
+             var box=document.getElementById("xgbox");
+             box.style.zIndex=-1;
+             box.style.display="none";
+         }
+         function showaddbox(){
+             var box=document.getElementById("addbox");
+             box.style.zIndex=3;
+             box.style.display="block";
+         }
+         function hideaddbox(){
+             var box=document.getElementById("addbox");
+             var e0=$('#brand-add-form').find("input").eq(0).val("");
+             var e1=$('#brand-add-form').find("input").eq(1).val("");
+             var e1=$('#brand-add-form').find("input").eq(2).val("");
+             box.style.zIndex=0;
+             box.style.display="none";
+          }
+         $('#addqr').click(function () {
+             var d=$('#brand-add-form').serialize();
+             d=decodeURIComponent(d,true);
+             var data=formToJson(d);
+             data=JSON.parse(data);
+             if(data.brandno !="") {
+                             var b1 = "<button onclick='xg(this)'>修改</button>";
+                             var b2 = "<button onclick='deletetr(this)'>删除</button>";
+                             var tb = document.getElementById("brandtable");
+                             var tr = document.createElement("tr");
+                             var td1 = document.createElement("td");
+                             var td2 = document.createElement("td");
+                             var td3 = document.createElement("td");
+                             var td4 = document.createElement("td");
+                             td1.innerHTML = data.brandno;
+                             td2.innerHTML = data.brandname;
+                             td3.innerHTML = data.url;
+                             td4.innerHTML = b1 + b2;
+                             tb.appendChild(tr);
+                             tr.appendChild(td1);
+                             tr.appendChild(td2);
+                             tr.appendChild(td3);
+                             tr.appendChild(td4);
+                             bgtchange(tr);
+             }else{
+                 alert("输入有误！");
+             }
+         });
+     </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="mycss/index.css">
+</head>
+<body>
+    <button id="userlogin">
+            <h2>用户</h2>
+            <h2>管理</h2>
+    </button>
+    <button id="adminlogin">
+            <h2>管理</h2>
+            <h2>登录</h2>
+    </button>
+    <div id="login0">
+        <div class="f1">
+            <h3 style="text-align: center">用户登录</h3>
+            <label>
+                <span><img src="pictures/user.png"></span><input type="text" placeholder="用户名" class="user">
+            </label>
+            <label>
+                <span><img src="pictures/lock.png"></span><input type="text" placeholder="密码" class="password">
+            </label>
+            <button class="submit">登录</button><button class="res" onclick="hiduser()">取消</button>
+        </div>
+    </div>
+    <div id="login1">
+        <div class="f1">
+            <h3 style="text-align: center">管理登录</h3>
+            <label>
+                <span><img src="pictures/user.png" alt="404"></span><input type="text" placeholder="用户名" id="user">
+            </label>
+            <label>
+                <span><img src="pictures/lock.png" alt="404"></span><input type="text" placeholder="密码" id="password">
+            </label>
+            <button class="submit">登录</button><button class="res" onclick="hidadmin()">取消</button>
+        </div>
+    </div>
+    <script src="libs/jQuery-2.1.4.min.js"></script>
+    <script>
+        $('#userlogin').click(function () {
+            var sp=document.getElementById("login0");
+            sp.style.display="block";
+            var user="user";
+            var password="123456";
+            $('.submit').click(function (){
+                var user0=$('.user').val();
+                var password0=$('.password').val();
+                if(user==user0&&password==password0){
+                    alert("登陆成功!");
+                    window.open("../path/CommodityXT.html");
+                }else{
+                    alert("登录失败!");
+                    location.href="index.html";
+                }
+            });
+        });
+        function hiduser(){
+            var sp=document.getElementById("login0");
+            $('.user').val("");
+            $('.password').val("");
+            sp.style.display="none";
+        }
+        $('#adminlogin').click(function () {
+            var sp=document.getElementById("login1");
+            sp.style.display="block";
+            var user="admin";
+            var password="123456";
+            $('.submit').click(function (){
+                var user0=$('#user').val();
+                var password0=$('#password').val();
+                if(user==user0&&password==password0){
+                    alert("登陆成功!");
+                    window.open("../path/CommodityXT.html");
+                }else{
+                    alert("登录失败!");
+                    location.href="index.html";
+                }
+            });
+        });
+        function hidadmin(){
+            var sp=document.getElementById("login1");
+            $('.user').val("");
+            $('.password').val("");
+            sp.style.display="none";
+        }
+    </script>
+</body>
+</html>

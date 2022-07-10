@@ -1,0 +1,36 @@
+html{
+    scroll-behavior: smooth;
+    background-color: antiquewhite;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.ddtable{
+    display: block;
+    width: 90vw;
+    position: absolute;
+    border-collapse: collapse;
+    text-align: center;
+}
+.ddtable th{
+    width: 18vw;
+    border: darkred solid 1px;
+    height: 5vh;
+}
+.ddtable td{
+    height: 5vh;
+    width: 18vw;
+    border: none;
+}
+#empty{
+    display: none;
+    position: fixed;
+    width: 68vw;
+    text-align: center;
+    transform: translate(0,12vh);
+    font-size: 1.5rem;
+    height: 6vh;
+    background-color: antiquewhite;
+
+}
