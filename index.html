@@ -4,93 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首页</title>
-    <link rel="stylesheet" href="mycss/index.css">
+    <link rel="stylesheet" href="./mycss/loginlearn.css">
+    <title>登录</title>
 </head>
 <body>
-    <pre>
-         用户名：user  密码：123456
-         管理名：admin 密码：123456
-    </pre>
-    <button id="userlogin">
-            <h2>用户</h2>
-            <h2>管理</h2>
-    </button>
-    <button id="adminlogin">
-            <h2>管理</h2>
-            <h2>登录</h2>
-    </button>
-    <div id="login0">
-        <div class="f1">
-            <h3 style="text-align: center">用户登录</h3>
-            <label>
-                <span><img src="pictures/user.png"></span><input type="text" placeholder="用户名" class="user">
-            </label>
-            <label>
-                <span><img src="pictures/lock.png"></span><input type="text" placeholder="密码" class="password">
-            </label>
-            <button class="submit">登录</button><button class="res" onclick="hiduser()">取消</button>
+    <!--滑切登录界面 -->
+    <div class="box">
+        <div class="pre-box">
+            <h2>WELCOME</h2>
+            <p>JOIN US!</p>
+            <div class="img-box">
+                <img src="./images/register.webp" alt="">
+            </div>
+        </div>
+        <div class="register-form">
+            <div class="title-box">
+                <h2>注册</h2>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="用户名">
+                <input type="password" placeholder="密码">
+                <input type="password" placeholder="确认密码">
+            </div>
+            <div class="btn-box">
+                <button>注册</button>
+                <p onclick="myswitch()">已有账号？登录</p>
+            </div>
+        </div>
+        <div class="login-form">
+            <div class="title-box">
+                <h2>登录</h2>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="用户名">
+                <input type="password" placeholder="密码">
+            </div>
+            <div class="btn-box">
+                <button>登录</button>
+                <p onclick="myswitch()">没有账号？注册</p>
+            </div>
         </div>
     </div>
-    <div id="login1">
-        <div class="f1">
-            <h3 style="text-align: center">管理登录</h3>
-            <label>
-                <span><img src="pictures/user.png" alt="404"></span><input type="text" placeholder="用户名" id="user">
-            </label>
-            <label>
-                <span><img src="pictures/lock.png" alt="404"></span><input type="text" placeholder="密码" id="password">
-            </label>
-            <button class="submit">登录</button><button class="res" onclick="hidadmin()">取消</button>
-        </div>
-    </div>
-    <script src="libs/jQuery-2.1.4.min.js"></script>
+    <script src="./lib/jQuery-2.1.4.min.js"></script>
     <script>
-        $('#userlogin').click(function () {
-            var sp=document.getElementById("login0");
-            sp.style.display="block";
-            var user="user";
-            var password="123456";
-            $('.submit').click(function (){
-                var user0=$('.user').val();
-                var password0=$('.password').val();
-                if(user==user0&&password==password0){
-                    alert("登陆成功!");
-                    window.open("CommodityXT.html");
-                }else{
-                    alert("登录失败!");
-                    location.href="index.html";
-                }
-            });
-        });
-        function hiduser(){
-            var sp=document.getElementById("login0");
-            $('.user').val("");
-            $('.password').val("");
-            sp.style.display="none";
-        }
-        $('#adminlogin').click(function () {
-            var sp=document.getElementById("login1");
-            sp.style.display="block";
-            var user="admin";
-            var password="123456";
-            $('.submit').click(function (){
-                var user0=$('#user').val();
-                var password0=$('#password').val();
-                if(user==user0&&password==password0){
-                    alert("登陆成功!");
-                    window.open("CommodityXT.html");
-                }else{
-                    alert("登录失败!");
-                    location.href="index.html";
-                }
-            });
-        });
-        function hidadmin(){
-            var sp=document.getElementById("login1");
-            $('.user').val("");
-            $('.password').val("");
-            sp.style.display="none";
+        let flag=true
+        const myswitch=()=>{
+            if(flag==true){
+                $(".pre-box").css("transform","translateX(100%)")
+                $(".pre-box").css("background-color","#c9e0ed")
+                $(".pre-box").css("box-shadow","4px 4px 3px rgba(0, 0, 0, .1)")
+                $("img").attr("src","./images/login.jpeg")
+                flag=!flag
+            }else{
+                $(".pre-box").css("transform","translateX(0%)")
+                $(".pre-box").css("background-color","rgb(245, 208, 214)")
+                $(".pre-box").css("box-shadow","-4px 4px 3px rgba(0, 0, 0, .1)")
+                $("img").attr("src","./images/register.webp")
+                flag=!flag
+            }
         }
     </script>
 </body>

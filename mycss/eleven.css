@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background: aqua;
+    display: grid;
+    grid-template: 1fr/repeat(5,1fr);
+}
+div{
+    grid-column: 3/4;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: orange;
+    justify-self: center;
+    animation-name: move;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move {
+    15%,45%,75%,90%,100%{
+        transform: translateY(70vh);
+        animation-timing-function: ease-out;
+    }
+    30%{
+        transform: translateY(20vh);
+        animation-timing-function: ease-in;
+    }
+    60%{
+        transform: translateY(30vh);
+        animation-timing-function: ease-in;
+    }
+    85%{
+        transform: translateY(45vh);
+        animation-timing-function: ease-in;
+    }
+    95%{
+        transform: translateY(60vh);
+        animation-timing-function: ease-in;
+    }
+}

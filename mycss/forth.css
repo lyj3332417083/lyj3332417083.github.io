@@ -1,0 +1,17 @@
+.box{
+    width: 60vw;
+    height: 70vh;
+    display: flex;
+    flex-wrap: wrap;
+    margin:auto;
+    background-color: aqua;
+    padding: 0;
+}
+.b1{
+    width: 10rem;
+    height: 8rem;
+    background-color: chartreuse;
+    margin: 10px;
+    cursor: pointer;
+    padding: 2px 0 2px 0;
+}

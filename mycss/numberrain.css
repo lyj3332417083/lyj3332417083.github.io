@@ -1,0 +1,13 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: black;
+    display: flex;
+    justify-content: center;
+}
+canvas{
+    position: absolute;
+    z-index: -1;
+}

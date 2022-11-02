@@ -1,0 +1,120 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+input{
+    outline: none;
+}
+html,body{
+    height: 100%;
+}
+body{
+    background: linear-gradient(to right,rgb(247, 208, 214),rgb(177, 221, 238));
+    display: flex;
+}
+.box{
+    position: relative;
+    display: flex;
+    width: 1050px;
+    height: 600px;
+    margin: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, .6);
+    box-shadow: 4px 4px 3px rgba(0, 0, 0, .1);
+}
+.login-form,.register-form{
+    flex: 1;
+    height: 100%;
+}
+.title-box{
+    height: 300px;
+    line-height: 500px;
+}
+.title-box h2{
+    color: white;
+    text-align: center;
+    letter-spacing: 5px;
+    text-shadow: 4px 4px 3px rgba(0, 0, 0, .1);
+}
+.input-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input{
+    width: 60%;
+    height: 40px;
+    margin-bottom: 20px;
+    text-indent: 9px;
+    border: 1px solid #b0cfe9;
+    border-radius: 4px;
+}
+input:focus{
+    color: #b0cfe9;
+}
+input:focus::placeholder{
+    opacity: 0;
+}
+.btn-box{
+    display: flex;
+    justify-content: center;
+}
+button{
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #69b3f0;
+    color: white;
+}
+button:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.btn-box p{
+    color: white;
+    line-height: 30px;
+    font-size: 14px;
+}
+.btn-box p:hover{
+    cursor: pointer;
+    border-bottom: 1px solid white;
+}
+.pre-box{
+    background-color: rgb(245, 208, 214);
+    position: absolute;
+    width: calc(1050px/2);
+    height: 100%;
+    left: 0;
+    top: 0;
+    border: 4px;
+    border-radius: 8px;
+    box-shadow: -4px 4px 3px rgba(0, 0, 0, .1);
+    transition: 0.5s ease-in-out;
+}
+.pre-box h2{
+    margin-top: 150px;
+    text-align: center;
+    color: white;
+    letter-spacing: 5px;
+    text-shadow: 4px 4px 3px rgba(0, 0, 0, .1);
+}
+.pre-box p{
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    text-shadow: 4px 4px 3px rgba(0, 0, 0, .1);
+    font-weight: bold;
+}
+.img-box{
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 4px 4px 3px rgba(0, 0, 0, .1);
+}
+.img-box img{
+    width: 100%;
+    transition: 0.5s ease-in-out;
+}

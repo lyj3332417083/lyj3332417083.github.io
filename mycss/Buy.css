@@ -1,84 +1,13 @@
+*{
+    padding: 0;
+    margin: 0;
+}
 html{
     scroll-behavior: smooth;
-    background-color: antiquewhite;
 }
-*{
-    margin: 0;
-    padding: 0;
-}
-.buytable{
-    display: block;
-    width: 90vw;
-    position: absolute;
-    border-collapse: collapse;
-    text-align: center;
-}
-.buytable th{
-    width: 18vw;
-    border: darkred solid 1px;
-    height: 5vh;
-}
-.buytable td{
-    height: 5vh;
-    width: 18vw;
-    border: none;
-}
-.buytable td button{
-    width: 5vw;
-    height: 4vh;
-    border-radius: 4px;
-    margin: 0 1vw 0 1vw;
-}
-.buytable td button:hover{
-    background-color: chocolate;
-}
-#buybox{
-    position: fixed;
-    transform: translate(90%,10%);
-    width: 30vw;
-    height: 45vh;
-    background-color: aqua;
-    border-radius: 8px;
-    display: none;
-}
-#buybox label{
-    text-align: center;
-    margin: 3vh 0 3vh 0;
-    display: block;
-}
-#buyqr{
-    transform: translate(70%,30%);
-    width: 6vw;
-    height: 4vh;
-    border-radius: 8px;
-}
-#buyqr:hover{
-    background-color: chocolate;
-    color: aliceblue;
-}
-#buyqx{
-    width: 6vw;
-    height: 4vh;
-    border-radius: 8px;
-    transform: translate(200%,30%);
-}
-#buyqx:hover{
-    background-color: chocolate;
-    color: aliceblue;
-}
-#empty{
-    display: none;
-    position: fixed;
-    width: 68vw;
-    text-align: center;
-    transform: translate(0,140%);
-    font-size: 1.5rem;
-    height: 6vh;
-    background-color: antiquewhite;
-
-}
-#ca{
-    position: fixed;
-    transform: translate(80vw,2vh);
-    z-index: 4;
+canvas{
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    opacity: 0.5;
 }

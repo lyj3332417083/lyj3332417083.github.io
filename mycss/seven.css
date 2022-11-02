@@ -1,0 +1,58 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ul{
+    list-style: none;
+    width: 600px;
+    height: 200px;
+    display: flex;
+}
+li{
+    position: relative;
+    flex: 1;
+    color: red;
+    border: solid 1px pink;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+i.fa{
+    font-size: 3em;
+    animation-name: hd;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    position: absolute;
+}
+li:nth-child(1)>i{
+    animation-direction: normal;
+}
+li:nth-child(2)>i{
+    animation-direction: reverse;
+}
+li:nth-child(3)>i{
+    animation-direction: alternate;
+}
+span{
+    position: absolute;
+    bottom: 0;
+}
+@keyframes hd {
+    to{
+        transform: scale(3);
+    }
+}
+.hid{
+    position: relative;
+    top: -20%;
+    left: 10%;
+}

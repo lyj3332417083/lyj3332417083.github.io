@@ -1,0 +1,84 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background: antiquewhite;
+    display: grid;
+}
+main{
+    width: 400px;
+    height: 200px;
+    align-self: center;
+    justify-self: center;
+    overflow: hidden;
+    position: relative;
+}
+section{
+    width: 1600px;
+    height: 200px;
+    display: grid;
+    grid-template: 1fr/repeat(4,400px);
+    animation-name: slide;
+    animation-duration: 4s;
+    animation-timing-function: steps(4,end);
+    animation-iteration-count: infinite;
+}
+div{
+    overflow: hidden;
+}
+img{
+    height: 100%;
+    width: 400px;
+    height: 200px;
+}
+@keyframes slide {
+    to{
+        transform: translateX(-1600px);
+    }
+}
+ul{
+    position: absolute;
+    left: 50%;
+    width: 160px;
+    bottom: 20%;
+    display: grid;
+    grid-template: 1fr/repeat(4,1fr);
+    transform: translateX(-50%);
+    list-style: none;
+    justify-items: center;
+}
+ul::after{
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: pink;
+    z-index: -1;
+    animation-name: num;
+    animation-duration: 4s;
+    animation-timing-function: steps(4,end);
+    animation-iteration-count: infinite;
+}
+@keyframes num {
+    to{
+        transform: translateX(160px);
+    }
+}
+section:hover,section:hover+ul::after{
+    animation-play-state: paused;
+}
+li{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background: rgba(0,0,0,.3);
+}

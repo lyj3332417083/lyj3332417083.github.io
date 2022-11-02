@@ -1,0 +1,84 @@
+*{
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+body{
+    background:antiquewhite;
+}
+.path1{
+    position: relative;
+    top: 15vh;
+    left: 10%;
+    width: 400px;
+    height: 50px;
+    background: black;
+    border-radius: 4px;
+}
+.path2{
+    position: relative;
+    top: 18vh;
+    left: 10%;
+    width: 400px;
+    height: 50px;
+    background: black;
+    border-radius: 4px;
+}
+.path3{
+    position: relative;
+    top: 21vh;
+    left: 10%;
+    width: 400px;
+    height: 50px;
+    background: black;
+    border-radius: 4px;
+}
+.path4{
+    position: relative;
+    top: 24vh;
+    left: 10%;
+    width: 400px;
+    height: 50px;
+    background: black;
+    border-radius: 4px;
+}
+.name1{
+    position: relative;
+    left: 4%;
+    top:20vh;
+    color: red;
+}
+.name2{
+    position: relative;
+    left: 4%;
+    top:23vh;
+    color: green;
+}
+.name3{
+    position: relative;
+    left: 4%;
+    top:26vh;
+    color: aqua;
+}
+.name4{
+    position: relative;
+    left: 4%;
+    top:29vh;
+    color:purple;
+}
+.name5{
+    width: 50px;
+    height: 1vh;
+    position: relative;
+    top: -28vh;
+    left: 45%;
+    background: greenyellow;
+}
+.jiuxu{
+    position: relative;
+    top: 5vh;
+    left: 45%;
+    width: 50px;
+    height: 350px;
+    background: black;
+}

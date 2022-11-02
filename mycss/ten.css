@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: antiquewhite;
+    display: grid;
+    grid-template: 1fr/1fr;
+
+}
+ul{
+    display: grid;
+    grid-template: 1fr/repeat(6, 1fr);
+    list-style: none;
+    gap: 10px;
+}
+li{
+    background: pink;
+    /* height: 50px; */
+    animation-name: move;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+li:nth-child(1){
+    animation-timing-function: ease;
+}
+li:nth-child(2){
+    animation-timing-function: ease-in;
+}
+li:nth-child(3){
+    animation-timing-function: ease-out;
+}
+li:nth-child(4){
+    animation-timing-function: ease-in-out;
+}
+li:nth-child(5){
+    animation-timing-function: linear;
+}
+li:nth-child(6){
+    animation-timing-function: cubic-bezier(0,1,1,0);
+}
+@keyframes move {
+    to{
+        transform: translateY(90vh);
+    }
+}
