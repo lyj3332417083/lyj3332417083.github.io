@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=0.2,maximum-scale=2.0,user-scalable=yes">
     <link rel="stylesheet" href="./mycss/loginlearn.css">
     <title>登录</title>
 </head>
@@ -17,12 +17,12 @@
                 <img src="./images/register.webp" alt="">
             </div>
         </div>
-        <div class="register-form">
+        <div class="register-form" onkeydown="keyk('register-form')">
             <div class="title-box">
                 <h2>注册</h2>
             </div>
             <div class="input-box">
-                <input type="text" placeholder="用户名">
+                <input type="text" placeholder="用户名" autocomplete="off">
                 <input type="password" placeholder="密码">
                 <input type="password" placeholder="确认密码">
             </div>
@@ -31,7 +31,7 @@
                 <p onclick="myswitch()">已有账号？登录</p>
             </div>
         </div>
-        <div class="login-form">
+        <div class="login-form" onkeydown="keyk('login-form')">
             <div class="title-box">
                 <h2>登录</h2>
             </div>
@@ -62,6 +62,30 @@
                 $("img").attr("src","./images/register.webp")
                 flag=!flag
             }
+        }
+        function keyk(x){
+            var focus=document.activeElement;
+            if(!document.querySelector("."+x).contains(focus))   return;
+            var inputs=document.querySelector("."+x).getElementsByTagName("input");
+            var event=window.event||event;
+            var i=0;
+            var key=event.keyCode;
+            for(i=0;i<inputs.length;i++){
+                if(inputs[i]===focus)  break;
+            }
+            switch (key) {
+                case 13://"按了enter键"
+                    inputs[i].onchange=()=>{
+                        inputs[i+1].focus();
+                    };
+                    break;
+                case 38://"按了↑键！"
+                    inputs[i-1].focus();
+                    break;
+                case 40://"按了↓键！"
+                    inputs[i+1].focus();
+                    break;
+           }
         }
     </script>
 </body>
